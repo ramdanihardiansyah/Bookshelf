@@ -1,0 +1,263 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    background-color: #f5f0e8;
+    color: #1a1a2e;
+}
+
+/* Header */
+.header {
+    background-color: #333;
+    text-align: center;
+    padding: 28px 20px;
+    margin-bottom: 40px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.header h1 {
+    font-family: serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #f5f0e8;
+    letter-spacing: 1px;
+}
+ 
+
+/* Main */
+.main-container {
+    text-align: left;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    max-width: 960px;
+    display: grid;
+    gap: 36px;
+}
+
+/* Section */
+section {
+    background: white;
+    border-radius: 4px;
+    padding: 32px;
+    box-shadow: 0 2px 15px #1a1a2e;
+    border-top: 4px solid #1a1a2e;
+    animation: fadeUp 0.4s ease both;
+}
+
+section h2 {
+    font-family: serif;
+    font-size: 27px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #1a1a2e;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ede8da;
+}
+
+/* Form */
+#bookForm, #searchBook {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#searchBook {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+#bookForm > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 10px 14px;
+    border: 1px solid #ede8da;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-size: 18px;
+    color: #1a1a2e;
+    background: #f5f0e8;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+input:focus {
+    border-color: #1a1a2e;
+    box-shadow: 0 0 0 3px #1a1a2e;
+    background: white;
+}
+
+.checkbox-row {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px !important;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #27ae60;
+    cursor: pointer;
+}
+
+/* Button */
+button {
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 3px;
+    transition: all 0.18s;
+}
+
+#bookFormSubmit, #searchSubmit {
+    background: #1a1a2e;
+    color: white;
+    padding: 12px 24px;
+    align-self: flex-start;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+#bookFormSubmit:hover, #searchSubmit:hover {
+    transform: translateY(-2px);
+    background-color: #c0392b;
+    box-shadow: 0 4px 12px #c0392b4d;
+}
+
+
+#searchBookTitle {
+    flex: 1;
+}
+
+/* Book List */
+#incompleteBookList, #completeBookList {
+    display: grid;
+    gap: 16px;
+}
+
+#bookItem {
+    background: #ede8da;
+    border-radius: 3px;
+    padding: 20px 24px;
+    border-left: 4px solid #1a1a2e;
+    flex-direction: column;
+    gap: 6px;
+    animation: fadeUp 0.3s ease both;
+    transition: box-shadow 0.2s;
+}
+
+#bookItem:hover {
+    box-shadow: 0 4px 16px #1a1a2e;
+}
+
+#completeBookList #bookItem {
+    border-left-color: #27ae60;
+}
+
+#bookItem h3 {
+    font-family: serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+#bookItem p {
+    font-size: 14px;
+    color: #555;
+}
+
+.book-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.book-actions button {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+}
+
+
+[data-testid="bookItemIsCompleteButton"]:hover {
+    background: #27ae60;
+    color: white;
+}
+
+[data-testid="bookItemIsCompleteButton"] {
+    background: transparent;
+    color: #27ae60;
+    border: 1.5px solid #27ae60;
+}
+
+[data-testid="bookItemDeleteButton"] {
+    background: transparent;
+    color: #c0392b;
+    border: 1.5px solid #c0392b;
+}
+
+[data-testid="bookItemDeleteButton"]:hover {
+    background: #c0392b;
+    color: white;
+}
+
+[data-testid="bookItemEditButton"] {
+    background: transparent;
+    color: #1a1a2e;
+    border: 1.5px solid #1a1a2e;
+}
+
+[data-testid="bookItemEditButton"]:hover {
+    background: #1a1a2e;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .main-container { padding: 0 16px 40px; }
+    section { padding: 24px 20px; }
+    #searchBook { flex-direction: column; }
+}
+
+/* Empty state */
+#incompleteBookList:empty::after,
+#completeBookList:empty::after {
+    content: 'Belum ada buku di sini.';
+    display: block;
+    text-align: center;
+    color: #aaa;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Animation */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+section:nth-child(2) {animation-delay: 0,05s;}
+section:nth-child(3) {animation-delay: 0.1s;}
+section:nth-child(4) {animation-delay: 0.15s;}
